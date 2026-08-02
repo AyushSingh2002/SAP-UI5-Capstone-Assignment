@@ -70,13 +70,13 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.f.routing.Router",
+        "routerClass": "sap.m.routing.Router",
         "controlAggregation": "beginColumnPages",
         "controlId": "fcl",
         "transition": "slide",
         "type": "View",
         "viewType": "XML",
-        "path": "novamart.inventoryportal.inventoryportal.view",
+        "viewPath": "novamart.inventoryportal.inventoryportal.view",
         "async": true,
         "bypassed": {
           "target": ["notFound"]
