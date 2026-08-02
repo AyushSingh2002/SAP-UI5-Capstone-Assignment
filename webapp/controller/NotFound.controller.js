@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (BaseController) {
     "use strict";
 
-    return BaseController.extend("novamart.inventoryportal.inventoryportal.controller.App", {
+    return BaseController.extend("novamart.inventoryportal.inventoryportal.controller.NotFound", {
 
         onInit: function () {
         }

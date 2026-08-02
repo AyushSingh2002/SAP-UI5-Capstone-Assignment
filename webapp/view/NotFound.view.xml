@@ -1,0 +1,14 @@
+<mvc:View
+    controllerName="novamart.inventoryportal.inventoryportal.controller.NotFound"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <MessagePage
+        id="notFoundPage"
+        title="{i18n>notFoundTitle}"
+        text="{i18n>notFoundText}"
+        description="{i18n>notFoundDescription}"
+        icon="sap-icon://document"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+    </MessagePage>
+</mvc:View>

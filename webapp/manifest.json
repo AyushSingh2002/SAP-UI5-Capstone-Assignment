@@ -38,7 +38,8 @@
       "minUI5Version": "1.150.1",
       "libs": {
         "sap.m": {},
-        "sap.ui.core": {}
+        "sap.ui.core": {},
+        "sap.f": {}
       }
     },
     "contentDensities": {
@@ -69,29 +70,47 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.m.routing.Router",
-        "controlAggregation": "pages",
-        "controlId": "app",
+        "routerClass": "sap.f.routing.Router",
+        "controlAggregation": "beginColumnPages",
+        "controlId": "fcl",
         "transition": "slide",
         "type": "View",
         "viewType": "XML",
         "path": "novamart.inventoryportal.inventoryportal.view",
         "async": true,
-        "viewPath": "novamart.inventoryportal.inventoryportal.view"
+        "bypassed": {
+          "target": ["notFound"]
+        }
       },
       "routes": [
         {
-          "name": "RouteView1",
-          "pattern": ":?query:",
-          "target": [
-            "TargetView1"
-          ]
+          "name": "list",
+          "pattern": "",
+          "target": ["list"]
+        },
+        {
+          "name": "detail",
+          "pattern": "product/{productId}",
+          "target": ["list", "detail"]
+        },
+        {
+          "name": "notFound",
+          "pattern": "notFound",
+          "target": ["notFound"]
         }
       ],
       "targets": {
-        "TargetView1": {
-          "id": "View1",
-          "name": "View1"
+        "list": {
+          "name": "List",
+          "controlAggregation": "beginColumnPages"
+        },
+        "detail": {
+          "name": "Detail",
+          "controlAggregation": "midColumnPages"
+        },
+        "notFound": {
+          "name": "NotFound",
+          "controlAggregation": "beginColumnPages"
         }
       }
     },

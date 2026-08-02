@@ -1,0 +1,19 @@
+<mvc:View
+    controllerName="novamart.inventoryportal.inventoryportal.controller.List"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page
+        id="listPage"
+        title="{i18n>listPageTitle}">
+        <content>
+            <List
+                id="productList"
+                items="{products>/products}"
+                itemPress=".onItemPress">
+                <StandardListItem
+                    title="{products>name}"
+                    type="Navigation" />
+            </List>
+        </content>
+    </Page>
+</mvc:View>

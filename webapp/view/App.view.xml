@@ -1,7 +1,14 @@
-<mvc:View controllerName="novamart.inventoryportal.inventoryportal.controller.App"
+<mvc:View
+    controllerName="novamart.inventoryportal.inventoryportal.controller.App"
     displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
     xmlns="sap.m">
-    <App id="app">
-    </App>
+    <f:FlexibleColumnLayout
+        id="fcl"
+        layout="{appView>/layout}"
+        busy="{appView>/busy}"
+        busyIndicatorDelay="{appView>/delay}"
+        backgroundDesign="Translucent">
+    </f:FlexibleColumnLayout>
 </mvc:View>

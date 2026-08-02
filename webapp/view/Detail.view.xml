@@ -1,0 +1,16 @@
+<mvc:View
+    controllerName="novamart.inventoryportal.inventoryportal.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page
+        id="detailPage"
+        title="{i18n>detailPageTitle}"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+        <content>
+            <ObjectHeader
+                id="detailObjectHeader"
+                title="{detailView>/productId}" />
+        </content>
+    </Page>
+</mvc:View>
