@@ -51,6 +51,13 @@
         "settings": {
           "bundleName": "novamart.inventoryportal.inventoryportal.i18n.i18n"
         }
+      },
+      "products": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/products.json",
+        "settings": {
+          "defaultBindingMode": "TwoWay"
+        }
       }
     },
     "resources": {
