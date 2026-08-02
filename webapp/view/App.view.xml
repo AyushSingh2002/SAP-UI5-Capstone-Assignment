@@ -3,15 +3,10 @@
     displayBlock="true"
     height="100%"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:f="sap.f"
-    xmlns="sap.m">
-    <App id="app">
-        <f:FlexibleColumnLayout
-            id="fcl"
-            layout="{appView>/layout}"
-            busy="{appView>/busy}"
-            busyIndicatorDelay="{appView>/delay}"
-            backgroundDesign="Translucent">
-        </f:FlexibleColumnLayout>
-    </App>
+    xmlns:f="sap.f">
+    <f:FlexibleColumnLayout
+        id="fcl"
+        layout="{appView>/layout}"
+        backgroundDesign="Translucent">
+    </f:FlexibleColumnLayout>
 </mvc:View>

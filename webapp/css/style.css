@@ -1,1 +1,5 @@
-/* Enter your custom styles here */
+/* Ensure FlexibleColumnLayout fills the full viewport height */
+.sapUiBody,
+.sapUiBody > div {
+    height: 100%;
+}
