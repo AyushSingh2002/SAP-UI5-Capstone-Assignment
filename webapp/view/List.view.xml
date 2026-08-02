@@ -5,14 +5,75 @@
     <Page
         id="listPage"
         title="{i18n>listPageTitle}">
+        <subHeader>
+            <Toolbar id="listFilterBar">
+                <SearchField
+                    id="idSearchField"
+                    placeholder="{i18n>searchPlaceholder}"
+                    liveChange=".onSearch"
+                    width="100%" />
+            </Toolbar>
+        </subHeader>
         <content>
             <List
                 id="productList"
                 items="{products>/products}"
-                itemPress=".onItemPress">
-                <StandardListItem
+                itemPress=".onItemPress"
+                updateFinished=".onUpdateFinished"
+                growing="true"
+                growingThreshold="20"
+                noDataText="{i18n>listNoData}">
+                <headerToolbar>
+                    <OverflowToolbar id="listToolbar">
+                        <Title id="listItemCount"
+                            text="{listView>/itemCount}" />
+                        <ToolbarSpacer />
+                        <Button
+                            id="idAddButton"
+                            icon="sap-icon://add"
+                            tooltip="{i18n>addProductTooltip}"
+                            press=".onAddProduct" />
+                        <Button
+                            id="idSortButton"
+                            icon="sap-icon://sort"
+                            tooltip="{i18n>sortTooltip}"
+                            press=".onSort" />
+                        <Button
+                            id="idFilterButton"
+                            icon="sap-icon://filter"
+                            tooltip="{i18n>filterTooltip}"
+                            press=".onFilter" />
+                        <Button
+                            id="idGroupButton"
+                            icon="sap-icon://group-2"
+                            tooltip="{i18n>groupTooltip}"
+                            press=".onGroup" />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <ObjectListItem
                     title="{products>name}"
-                    type="Navigation" />
+                    number="{
+                        parts: ['products>price', 'products>currency'],
+                        formatter: '.formatter.formatCurrency'
+                    }"
+                    numberUnit="{products>currency}"
+                    type="Navigation">
+                    <firstStatus>
+                        <ObjectStatus
+                            text="{
+                                parts: ['products>stock', 'products>reorderThreshold'],
+                                formatter: '.formatter.formatStockText'
+                            }"
+                            state="{
+                                parts: ['products>stock', 'products>reorderThreshold'],
+                                formatter: '.formatter.formatStockState'
+                            }" />
+                    </firstStatus>
+                    <attributes>
+                        <ObjectAttribute text="{products>category}" />
+                        <ObjectAttribute text="SKU: {products>sku}" />
+                    </attributes>
+                </ObjectListItem>
             </List>
         </content>
     </Page>
