@@ -2,10 +2,11 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
     "sap/ui/model/json/JSONModel",
+    "sap/ui/model/resource/ResourceModel",
     "sap/ui/core/Fragment",
     "sap/ui/core/ValueState",
     "sap/m/MessageToast"
-], function (Controller, History, JSONModel, Fragment, ValueState, MessageToast) {
+], function (Controller, History, JSONModel, ResourceModel, Fragment, ValueState, MessageToast) {
     "use strict";
 
     return Controller.extend("novamart.inventoryportal.inventoryportal.controller.BaseController", {
@@ -62,16 +63,30 @@ sap.ui.define([
 
         /**
          * Switches active SAPUI5 locale dynamically (e.g. "en" | "de").
+         * Re-instantiates the Component's i18n ResourceModel to update view bindings.
          * @param {sap.ui.base.Event} oEvent The selectionChange event
          */
         onLanguageChange: function (oEvent) {
             var sLang = oEvent.getParameter("item").getKey();
+
+            // Update core locale configuration
             if (sap.ui.getCore().getConfiguration().setLanguage) {
                 sap.ui.getCore().getConfiguration().setLanguage(sLang);
             }
             if (sap.ui.core.Configuration && sap.ui.core.Configuration.setLanguage) {
                 sap.ui.core.Configuration.setLanguage(sLang);
             }
+
+            // Dynamically replace i18n model for seamless view updates
+            var oI18nModel = new ResourceModel({
+                bundleName: "novamart.inventoryportal.inventoryportal.i18n.i18n",
+                bundleUrl: "i18n/i18n.properties",
+                supportedLocales: ["", "en", "de"],
+                fallbackLocale: "",
+                locale: sLang
+            });
+
+            this.getOwnerComponent().setModel(oI18nModel, "i18n");
         },
 
         /* =========================================================== */
