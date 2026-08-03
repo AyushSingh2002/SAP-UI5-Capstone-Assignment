@@ -62,6 +62,8 @@
 
             <IconTabBar
                 id="detailIconTabBar"
+                headerMode="Inline"
+                expandable="false"
                 class="sapUiResponsiveContentPadding">
                 <items>
                     <IconTabFilter
