@@ -268,11 +268,27 @@ sap.ui.define([
             }
 
             oProductsModel.refresh(true);
+            this.saveProductsToLocalStorage();
             MessageToast.show(sMsg);
 
             this._pAddEditDialog.then(function (oDialog) {
                 oDialog.close();
             });
+        },
+
+        /**
+         * Persists the current products array to browser localStorage.
+         */
+        saveProductsToLocalStorage: function () {
+            var oProductsModel = this.getModel("products");
+            if (oProductsModel) {
+                var aProducts = oProductsModel.getProperty("/products") || [];
+                try {
+                    localStorage.setItem("novamart_products", JSON.stringify(aProducts));
+                } catch (e) {
+                    // Ignore storage exceptions
+                }
+            }
         },
 
         /**

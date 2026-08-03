@@ -92,6 +92,7 @@ sap.ui.define([
 
             oModel.setProperty(sPath + "/stock", iNewStock);
             oModel.setProperty(sPath + "/lastUpdated", new Date().toISOString());
+            this.saveProductsToLocalStorage();
 
             var sMsg = this.getResourceBundle().getText("reorderSuccessMessage", [oProduct.name, iNewStock]);
             MessageToast.show(sMsg);
@@ -137,6 +138,7 @@ sap.ui.define([
             if (iIndex !== -1) {
                 aProducts.splice(iIndex, 1);
                 oModel.setProperty("/products", aProducts);
+                this.saveProductsToLocalStorage();
 
                 var sSuccessMsg = this.getResourceBundle().getText("deleteSuccessMessage", [oProduct.name]);
                 MessageToast.show(sSuccessMsg);

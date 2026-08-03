@@ -28,6 +28,24 @@ sap.ui.define([
             });
             this.setModel(oAppViewModel, "appView");
 
+            // Load persisted product data from localStorage if present
+            var oProductsModel = this.getModel("products");
+            if (oProductsModel) {
+                oProductsModel.dataLoaded().then(function () {
+                    var sSavedProducts = localStorage.getItem("novamart_products");
+                    if (sSavedProducts) {
+                        try {
+                            var aProducts = JSON.parse(sSavedProducts);
+                            if (Array.isArray(aProducts) && aProducts.length > 0) {
+                                oProductsModel.setProperty("/products", aProducts);
+                            }
+                        } catch (e) {
+                            // Fallback to default products.json
+                        }
+                    }
+                });
+            }
+
             // enable routing
             this.getRouter().initialize();
         }
