@@ -88,10 +88,25 @@ sap.ui.define([
         },
 
         /**
-         * Stub handler for Add Product button — opens dialog in Phase 4.
+         * Opens the AddEditProduct dialog in Add mode.
          */
         onAddProduct: function () {
-            MessageToast.show(this.getResourceBundle().getText("addProductStub"));
+            var oNewProduct = {
+                productId: "",
+                name: "",
+                category: "Hardware",
+                sku: "",
+                price: "",
+                currency: "USD",
+                stock: "",
+                reorderThreshold: 10,
+                supplier: "",
+                warehouse: "",
+                description: "",
+                imageUrl: "",
+                lastUpdated: new Date().toISOString()
+            };
+            this.openAddEditDialog(oNewProduct, false);
         },
 
         /**

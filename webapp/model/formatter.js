@@ -1,6 +1,7 @@
 sap.ui.define([
-    "sap/ui/core/format/NumberFormat"
-], function (NumberFormat) {
+    "sap/ui/core/format/NumberFormat",
+    "sap/ui/core/format/DateFormat"
+], function (NumberFormat, DateFormat) {
     "use strict";
 
     return {
@@ -50,6 +51,22 @@ sap.ui.define([
                 showMeasure: false
             });
             return oCurrencyFormat.format(fPrice, sCurrency);
+        },
+
+        /**
+         * Formats an ISO date string into a localized medium date-time string.
+         * @param {string} sDate ISO date string
+         * @returns {string} Formatted date string
+         */
+        formatDate: function (sDate) {
+            if (!sDate) {
+                return "";
+            }
+            var oDate = new Date(sDate);
+            var oDateFormat = DateFormat.getDateTimeInstance({
+                style: "medium"
+            });
+            return oDateFormat.format(oDate);
         }
     };
 });

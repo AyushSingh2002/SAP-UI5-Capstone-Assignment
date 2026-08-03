@@ -1,16 +1,137 @@
 <mvc:View
     controllerName="novamart.inventoryportal.inventoryportal.controller.Detail"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
     xmlns="sap.m">
     <Page
         id="detailPage"
         title="{i18n>detailPageTitle}"
         showNavButton="true"
         navButtonPress=".onNavBack">
+        <headerContent>
+            <Button
+                id="idEditButton"
+                text="{i18n>editButton}"
+                icon="sap-icon://edit"
+                type="Emphasized"
+                press=".onEditProduct" />
+            <Button
+                id="idReorderButton"
+                text="{i18n>reorderButton}"
+                icon="sap-icon://cart-plus"
+                type="Accept"
+                press=".onReorderProduct" />
+            <Button
+                id="idDeleteButton"
+                text="{i18n>deleteButton}"
+                icon="sap-icon://delete"
+                type="Reject"
+                press=".onDeleteProduct" />
+        </headerContent>
         <content>
             <ObjectHeader
                 id="detailObjectHeader"
-                title="{detailView>/productId}" />
+                title="{products>name}"
+                number="{
+                    parts: ['products>price', 'products>currency'],
+                    formatter: '.formatter.formatCurrency'
+                }"
+                numberUnit="{products>currency}"
+                icon="{= ${products>imageUrl} ? ${products>imageUrl} : 'sap-icon://product'}"
+                responsive="true"
+                fullWidth="true">
+                <firstStatus>
+                    <ObjectStatus
+                        id="detailStockStatus"
+                        text="{
+                            parts: ['products>stock', 'products>reorderThreshold'],
+                            formatter: '.formatter.formatStockText'
+                        }"
+                        state="{
+                            parts: ['products>stock', 'products>reorderThreshold'],
+                            formatter: '.formatter.formatStockState'
+                        }" />
+                </firstStatus>
+                <attributes>
+                    <ObjectAttribute text="{i18n>labelCategory}: {products>category}" />
+                    <ObjectAttribute text="SKU: {products>sku}" />
+                    <ObjectAttribute text="{i18n>labelSupplier}: {products>supplier}" />
+                </attributes>
+            </ObjectHeader>
+
+            <IconTabBar
+                id="detailIconTabBar"
+                class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter
+                        id="tabGeneral"
+                        icon="sap-icon://hint"
+                        text="{i18n>sectionGeneralInfo}">
+                        <form:SimpleForm
+                            id="formGeneralInfo"
+                            editable="false"
+                            layout="ColumnLayout"
+                            columnsM="2"
+                            columnsL="2">
+                            <form:content>
+                                <Label text="{i18n>labelProductId}" />
+                                <Text text="{products>productId}" />
+
+                                <Label text="{i18n>labelName}" />
+                                <Text text="{products>name}" />
+
+                                <Label text="{i18n>labelCategory}" />
+                                <Text text="{products>category}" />
+
+                                <Label text="{i18n>labelSku}" />
+                                <Text text="{products>sku}" />
+
+                                <Label text="{i18n>labelSupplier}" />
+                                <Text text="{products>supplier}" />
+
+                                <Label text="{i18n>labelWarehouse}" />
+                                <Text text="{products>warehouse}" />
+
+                                <Label text="{i18n>labelDescription}" />
+                                <Text text="{products>description}" />
+                            </form:content>
+                        </form:SimpleForm>
+                    </IconTabFilter>
+
+                    <IconTabFilter
+                        id="tabInventory"
+                        icon="sap-icon://bar-chart"
+                        text="{i18n>sectionInventoryPricing}">
+                        <form:SimpleForm
+                            id="formInventoryInfo"
+                            editable="false"
+                            layout="ColumnLayout"
+                            columnsM="2"
+                            columnsL="2">
+                            <form:content>
+                                <Label text="{i18n>labelPrice}" />
+                                <Text text="{
+                                    parts: ['products>price', 'products>currency'],
+                                    formatter: '.formatter.formatCurrency'
+                                } {products>currency}" />
+
+                                <Label text="{i18n>labelStock}" />
+                                <Text text="{products>stock} units" />
+
+                                <Label text="{i18n>labelReorderThreshold}" />
+                                <Text text="{products>reorderThreshold} units" />
+
+                                <Label text="{i18n>labelLastUpdated}" />
+                                <Text text="{
+                                    path: 'products>lastUpdated',
+                                    formatter: '.formatter.formatDate'
+                                }" />
+                            </form:content>
+                        </form:SimpleForm>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
         </content>
     </Page>
 </mvc:View>

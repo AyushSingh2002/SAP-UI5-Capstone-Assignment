@@ -1,0 +1,123 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m">
+    <Dialog
+        id="addEditProductDialog"
+        title="{= ${dialogView>/isEdit} ? ${i18n>editProductTitle} : ${i18n>addProductTitle} }"
+        contentWidth="550px">
+        <content>
+            <form:SimpleForm
+                id="addEditForm"
+                editable="true"
+                layout="ColumnLayout"
+                columnsM="2"
+                columnsL="2">
+                <form:content>
+                    <Label text="{i18n>labelProductId}" />
+                    <Input
+                        id="idInputProductId"
+                        value="{dialogModel>/productId}"
+                        editable="false" />
+
+                    <Label text="{i18n>labelName}" required="true" />
+                    <Input
+                        id="idInputName"
+                        value="{dialogModel>/name}"
+                        valueState="{dialogView>/nameState}"
+                        valueStateText="{dialogView>/nameStateText}"
+                        change=".onInputChange" />
+
+                    <Label text="{i18n>labelCategory}" required="true" />
+                    <ComboBox
+                        id="idInputCategory"
+                        value="{dialogModel>/category}"
+                        valueState="{dialogView>/categoryState}"
+                        valueStateText="{dialogView>/categoryStateText}"
+                        change=".onInputChange">
+                        <core:Item key="Hardware" text="Hardware" />
+                        <core:Item key="Networking" text="Networking" />
+                        <core:Item key="Software" text="Software" />
+                        <core:Item key="Consumables" text="Consumables" />
+                        <core:Item key="Accessories" text="Accessories" />
+                    </ComboBox>
+
+                    <Label text="{i18n>labelSku}" required="true" />
+                    <Input
+                        id="idInputSku"
+                        value="{dialogModel>/sku}"
+                        valueState="{dialogView>/skuState}"
+                        valueStateText="{dialogView>/skuStateText}"
+                        change=".onInputChange" />
+
+                    <Label text="{i18n>labelPrice}" required="true" />
+                    <Input
+                        id="idInputPrice"
+                        value="{dialogModel>/price}"
+                        type="Number"
+                        valueState="{dialogView>/priceState}"
+                        valueStateText="{dialogView>/priceStateText}"
+                        change=".onInputChange" />
+
+                    <Label text="{i18n>labelCurrency}" />
+                    <Input
+                        id="idInputCurrency"
+                        value="{dialogModel>/currency}" />
+
+                    <Label text="{i18n>labelStock}" required="true" />
+                    <Input
+                        id="idInputStock"
+                        value="{dialogModel>/stock}"
+                        type="Number"
+                        valueState="{dialogView>/stockState}"
+                        valueStateText="{dialogView>/stockStateText}"
+                        change=".onInputChange" />
+
+                    <Label text="{i18n>labelReorderThreshold}" required="true" />
+                    <Input
+                        id="idInputReorderThreshold"
+                        value="{dialogModel>/reorderThreshold}"
+                        type="Number"
+                        valueState="{dialogView>/reorderThresholdState}"
+                        valueStateText="{dialogView>/reorderThresholdStateText}"
+                        change=".onInputChange" />
+
+                    <Label text="{i18n>labelSupplier}" />
+                    <Input
+                        id="idInputSupplier"
+                        value="{dialogModel>/supplier}" />
+
+                    <Label text="{i18n>labelWarehouse}" />
+                    <Input
+                        id="idInputWarehouse"
+                        value="{dialogModel>/warehouse}" />
+
+                    <Label text="{i18n>labelImageUrl}" />
+                    <Input
+                        id="idInputImageUrl"
+                        value="{dialogModel>/imageUrl}"
+                        placeholder="https://..." />
+
+                    <Label text="{i18n>labelDescription}" />
+                    <TextArea
+                        id="idInputDescription"
+                        value="{dialogModel>/description}"
+                        rows="3" />
+                </form:content>
+            </form:SimpleForm>
+        </content>
+        <beginButton>
+            <Button
+                id="idSaveProductButton"
+                text="{i18n>saveButton}"
+                type="Emphasized"
+                press=".onSaveProduct" />
+        </beginButton>
+        <endButton>
+            <Button
+                id="idCancelProductButton"
+                text="{i18n>cancelButton}"
+                press=".onCancelDialog" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>
