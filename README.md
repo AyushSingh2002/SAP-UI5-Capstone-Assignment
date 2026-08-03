@@ -101,26 +101,26 @@ SAP-UI5-Capstone-Assignment/
 
 ---
 
-## 3–5 Minute Demo Video Script
+## Demo Video Walkthrough Guide
 
-1. **Introduction & FCL Layout (0:00 - 0:45)**:
+1. **Introduction & FCL Layout**:
    - Boot app, show Flexible Column Layout (FCL) two-column desktop mode.
    - Show initial list header item count: `Products (20)`.
 
-2. **List Controls: Search, Sort, Group, Filter (0:45 - 1:45)**:
+2. **List Controls: Search, Sort, Group, Filter**:
    - Type `"Scanner"` in search box to demonstrate live filtering.
    - Open `ViewSettings` dialog: sort by price descending, group by category, filter by "Low Stock".
    - Clear search to show `IllustratedMessage` empty state when entering `"XYZ999"`.
 
-3. **Detail View & Deep Linking (1:45 - 2:30)**:
+3. **Detail View & Deep Linking**:
    - Select a product; point out URL route change (`#/product/P-1001`).
    - Change address bar URL to `#/product/NON-EXISTENT` to show fallback to `NotFound.view.xml`.
 
-4. **Product Actions: Reorder, Delete, Edit & Add (2:30 - 3:45)**:
+4. **Product Actions: Reorder, Delete, Edit & Add**:
    - Click **Reorder (+50)** $\rightarrow$ verify stock badge updates from Warning to Success immediately.
    - Click **Edit** $\rightarrow$ modify product description $\rightarrow$ save $\rightarrow$ verify detail view updates.
    - Click **Add (+)** $\rightarrow$ attempt Save with empty fields to show `ValueState.Error` validation $\rightarrow$ complete valid fields $\rightarrow$ verify new product appears in list.
    - Click **Delete** $\rightarrow$ confirm in `MessageBox` $\rightarrow$ verify item removal and FCL return to single column.
 
-5. **Multi-Language Locale Switch (3:45 - 4:15)**:
+5. **Multi-Language Locale Switch**:
    - Toggle language switcher from **EN** to **DE** in toolbar $\rightarrow$ demonstrate instant translation of headers, labels, and buttons into German.
