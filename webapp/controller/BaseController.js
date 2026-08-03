@@ -60,6 +60,20 @@ sap.ui.define([
             }
         },
 
+        /**
+         * Switches active SAPUI5 locale dynamically (e.g. "en" | "de").
+         * @param {sap.ui.base.Event} oEvent The selectionChange event
+         */
+        onLanguageChange: function (oEvent) {
+            var sLang = oEvent.getParameter("item").getKey();
+            if (sap.ui.getCore().getConfiguration().setLanguage) {
+                sap.ui.getCore().getConfiguration().setLanguage(sLang);
+            }
+            if (sap.ui.core.Configuration && sap.ui.core.Configuration.setLanguage) {
+                sap.ui.core.Configuration.setLanguage(sLang);
+            }
+        },
+
         /* =========================================================== */
         /* add / edit product dialog shared handlers                   */
         /* =========================================================== */

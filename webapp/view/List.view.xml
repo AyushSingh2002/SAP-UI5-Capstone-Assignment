@@ -21,8 +21,7 @@
                 itemPress=".onItemPress"
                 updateFinished=".onUpdateFinished"
                 growing="true"
-                growingThreshold="20"
-                noDataText="{i18n>listNoData}">
+                growingThreshold="20">
                 <headerToolbar>
                     <OverflowToolbar id="listToolbar">
                         <Title id="listItemCount"
@@ -48,32 +47,50 @@
                             icon="sap-icon://group-2"
                             tooltip="{i18n>groupTooltip}"
                             press=".onGroup" />
+                        <SegmentedButton
+                            id="idLangSegmentedButton"
+                            selectedKey="en"
+                            selectionChange=".onLanguageChange">
+                            <items>
+                                <SegmentedButtonItem key="en" text="EN" />
+                                <SegmentedButtonItem key="de" text="DE" />
+                            </items>
+                        </SegmentedButton>
                     </OverflowToolbar>
                 </headerToolbar>
-                <ObjectListItem
-                    title="{products>name}"
-                    number="{
-                        parts: ['products>price', 'products>currency'],
-                        formatter: '.formatter.formatCurrency'
-                    }"
-                    numberUnit="{products>currency}"
-                    type="Navigation">
-                    <firstStatus>
-                        <ObjectStatus
-                            text="{
-                                parts: ['products>stock', 'products>reorderThreshold'],
-                                formatter: '.formatter.formatStockText'
-                            }"
-                            state="{
-                                parts: ['products>stock', 'products>reorderThreshold'],
-                                formatter: '.formatter.formatStockState'
-                            }" />
-                    </firstStatus>
-                    <attributes>
-                        <ObjectAttribute text="{products>category}" />
-                        <ObjectAttribute text="SKU: {products>sku}" />
-                    </attributes>
-                </ObjectListItem>
+                <noData>
+                    <IllustratedMessage
+                        id="listNoDataIllustration"
+                        illustrationType="sapIllu-Search"
+                        title="{i18n>listNoData}"
+                        description="{i18n>notFoundDescription}" />
+                </noData>
+                <items>
+                    <ObjectListItem
+                        title="{products>name}"
+                        number="{
+                            parts: ['products>price', 'products>currency'],
+                            formatter: '.formatter.formatCurrency'
+                        }"
+                        numberUnit="{products>currency}"
+                        type="Navigation">
+                        <firstStatus>
+                            <ObjectStatus
+                                text="{
+                                    parts: ['products>stock', 'products>reorderThreshold'],
+                                    formatter: '.formatter.formatStockText'
+                                }"
+                                state="{
+                                    parts: ['products>stock', 'products>reorderThreshold'],
+                                    formatter: '.formatter.formatStockState'
+                                }" />
+                        </firstStatus>
+                        <attributes>
+                            <ObjectAttribute text="{products>category}" />
+                            <ObjectAttribute text="SKU: {products>sku}" />
+                        </attributes>
+                    </ObjectListItem>
+                </items>
             </List>
         </content>
     </Page>

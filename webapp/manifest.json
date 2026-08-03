@@ -5,8 +5,8 @@
     "type": "application",
     "i18n": {
       "bundleUrl": "i18n/i18n.properties",
-      "supportedLocales": [""],
-      "fallbackLocale": ""
+      "supportedLocales": ["en", "de"],
+      "fallbackLocale": "en"
     },
     "applicationVersion": {
       "version": "0.0.1"
@@ -55,8 +55,8 @@
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
           "bundleName": "novamart.inventoryportal.inventoryportal.i18n.i18n",
-          "supportedLocales": [""],
-          "fallbackLocale": ""
+          "supportedLocales": ["en", "de"],
+          "fallbackLocale": "en"
         }
       },
       "products": {
